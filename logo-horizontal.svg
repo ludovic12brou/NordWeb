@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 180" width="600" height="180">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700;800&amp;display=swap');
+    </style>
+  </defs>
+  
+  <!-- Logo Icon Container (Simple Compass) -->
+  <g id="logo-icon" transform="translate(20, 10)">
+    <!-- Main Orange Circle -->
+    <path d="M 80 10 A 70 70 0 1 0 150 80" 
+          fill="none" 
+          stroke="#F97316" 
+          stroke-width="12"
+          stroke-linecap="round"/>
+    
+    <!-- Compass Arrow (North-East) -->
+    <!-- Integration: The arrow emerges from the center/gap and points out -->
+    <path d="M 80 80 L 135 25 L 110 25 L 135 25 L 135 50 Z" 
+          fill="#F97316"
+          stroke="none"/>
+    
+    <!-- Stylized Needle part -->
+    <path d="M 125 35 L 90 70 L 105 55 Z" fill="#F97316"/>
+  </g>
+  
+  <!-- Text Section -->
+  <g id="text-section" transform="translate(180, 0)">
+    <!-- NORD Text (White for contrast) -->
+    <text x="0" y="100" 
+          font-family="'Poppins', sans-serif" 
+          font-size="64" 
+          font-weight="800" 
+          fill="white"
+          letter-spacing="2">
+      NORD
+    </text>
+    
+    <!-- WEB Text (Orange for emphasis) -->
+    <text x="210" y="100" 
+          font-family="'Poppins', sans-serif" 
+          font-size="64" 
+          font-weight="800" 
+          fill="#F97316"
+          letter-spacing="2">
+      WEB
+    </text>
+    
+    <!-- Slogan -->
+    <text x="5" y="140" 
+          font-family="'Poppins', sans-serif" 
+          font-size="20" 
+          font-weight="600" 
+          fill="rgba(255,255,255,0.7)"
+          letter-spacing="4">
+      RÉUSSITE NUMÉRIQUE
+    </text>
+  </g>
+</svg>
