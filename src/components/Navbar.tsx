@@ -27,12 +27,16 @@ export default function Navbar() {
       <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
         <Link href="#" className="flex items-center group">
           <Image
-            src="/logo-horizontal.svg"
+            src="/logo.png"
             alt="NordWeb Logo"
-            width={180}
+            width={55}
             height={55}
             className="h-10 w-auto transition-transform duration-300 group-hover:scale-105"
           />
+          <div className="flex flex-col ml-2">
+            <span className="text-white font-bold text-xl">NordWeb</span>
+            <span className="text-orange-500 font-medium text-sm">Solutions Web</span>
+          </div>
         </Link>
 
         {/* Mobile Toggle */}
