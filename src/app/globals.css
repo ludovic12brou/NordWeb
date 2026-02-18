@@ -1,0 +1,103 @@
+@import "tailwindcss";
+
+@theme {
+  --font-heading: var(--font-heading);
+  --font-primary: var(--font-primary);
+
+  --color-primary: #0E2A4F;
+  --color-primary-light: #1D4E89;
+  --color-primary-dark: #091E30;
+  --color-secondary: #4A90E2;
+
+  --color-accent: #F97316;
+  --color-accent-light: #FCA04A;
+  --color-accent-amber: #FFB566;
+  --color-accent-deep: #D55A2F;
+}
+
+/* 
+  We keep the :root variables if needed for other scripts, 
+  but Tailwind 4 @theme handles the utility generation.
+*/
+
+@layer base {
+  body {
+    @apply bg-primary-dark text-gray-100 font-primary;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold text-white leading-tight;
+  }
+}
+
+@layer components {
+  .container {
+    @apply w-full max-w-[1280px] mx-auto px-4 md:px-8;
+  }
+
+  .btn {
+    @apply inline-block px-8 py-3 font-primary font-semibold text-center rounded-xl border-2 border-transparent transition-all duration-300 whitespace-nowrap cursor-pointer;
+  }
+
+  .btn-primary {
+    @apply text-white shadow-md hover:-translate-y-1 hover:shadow-lg;
+    background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  }
+  
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--color-accent-light) 0%, var(--color-accent) 100%);
+    box-shadow: 0 10px 30px rgba(249, 115, 22, 0.3), 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .btn-secondary {
+    @apply text-white hover:-translate-y-1 hover:shadow-lg;
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(5px);
+  }
+  
+  .btn-secondary:hover {
+    background: var(--color-primary);
+    box-shadow: 0 8px 25px rgba(14, 42, 79, 0.3);
+  }
+
+  .section-title {
+    @apply text-4xl font-extrabold text-white mb-6 relative inline-block;
+  }
+  
+  .section-title::after {
+    content: '';
+    @apply absolute -bottom-2 left-1/2 -translate-x-1/2 w-20 h-1 rounded-sm;
+    background: linear-gradient(90deg, var(--color-accent) 0%, var(--color-accent-light) 100%);
+  }
+
+  .section-subtitle {
+    @apply text-xl text-gray-300 max-w-2xl mx-auto;
+  }
+}
+
+/* Custom Utilities / Animations */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Mobile Menu Animation */
+.mobile-menu-enter {
+  transform: translateY(0);
+  opacity: 1;
+  max-height: 500px;
+}
+
+.mobile-menu-exit {
+  transform: translateY(-150%);
+  opacity: 0;
+  max-height: 0;
+}
