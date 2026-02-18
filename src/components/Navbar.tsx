@@ -60,7 +60,7 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Contact"].map((item) => (
+          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Équipe", "Contact"].map((item) => (
             <li key={item}>
               <Link
                 href={`#${item.toLowerCase().replace("é", "e").replace("à", "a")}`}
@@ -79,7 +79,7 @@ export default function Navbar() {
             isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Contact"].map((item) => (
+          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Équipe", "Contact"].map((item) => (
             <Link
               key={item}
               href={`#${item.toLowerCase().replace("é", "e").replace("à", "a")}`}

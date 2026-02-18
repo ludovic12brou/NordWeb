@@ -131,14 +131,24 @@ export default function ParticleBackground() {
       connect();
     };
 
+    const handleScroll = () => {
+        if (!canvasRef.current) return;
+        const scrollY = window.scrollY;
+        // Parallax effect: Move background down at half speed of scroll
+        // This makes it look like it's further away (moving slower relative to viewport)
+        canvasRef.current.style.transform = `translateY(${scrollY * 0.5}px)`;
+    };
+
     window.addEventListener("resize", resizeCanvas);
     window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("scroll", handleScroll);
     resizeCanvas();
     animate();
 
     return () => {
       window.removeEventListener("resize", resizeCanvas);
       window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
@@ -146,7 +156,7 @@ export default function ParticleBackground() {
   return (
     <canvas
       ref={canvasRef}
-      className="absolute inset-0 z-0 bg-transparent"
+      className="absolute inset-0 z-0 bg-transparent will-change-transform"
     />
   );
 }
