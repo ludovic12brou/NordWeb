@@ -1,8 +1,11 @@
+import ParticleBackground from "./ParticleBackground";
+
 export default function Hero() {
   return (
     <section id="home" className="relative min-h-screen flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-[#7c2d12]">
       {/* Animated Background */}
-      <div className="absolute inset-0 z-0">
+      <ParticleBackground />
+      <div className="absolute inset-0 z-0 pointer-events-none">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(249,115,22,0.15)_0%,transparent_50%)] animate-pulse" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_30%,rgba(249,115,22,0.25)_0%,transparent_50%)] animate-pulse delay-1000" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_80%,rgba(29,78,137,0.1)_0%,transparent_50%)] animate-pulse delay-2000" />
