@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Footer() {
   return (
@@ -6,15 +7,19 @@ export default function Footer() {
       <div className="container">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           <div className="space-y-4">
-            <a href="#" className="inline-block">
+            <Link href="#" className="inline-flex items-center">
               <Image 
-                src="/logo-horizontal.svg" 
+                src="/logo.png" 
                 alt="NordWeb Logo" 
-                width={180} 
+                width={55} 
                 height={55} 
                 className="h-12 w-auto"
               />
-            </a>
+              <div className="flex flex-col ml-2">
+                <span className="text-white font-bold text-xl">NordWeb</span>
+                <span className="text-orange-500 font-medium text-sm">Solutions Web</span>
+              </div>
+            </Link>
             <p className="text-gray-400 leading-relaxed">
               Votre partenaire de confiance pour des solutions web d'excellence.
             </p>
