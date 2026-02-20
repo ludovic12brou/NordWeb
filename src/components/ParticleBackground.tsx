@@ -40,6 +40,7 @@ export default function ParticleBackground() {
       directionY: number;
       size: number;
       color: string;
+      mouseReactionSpeed: number;
 
       constructor() {
         this.x = Math.random() * (canvas?.width || window.innerWidth);
@@ -48,6 +49,7 @@ export default function ParticleBackground() {
         this.directionY = Math.random() * 2 - 1;
         this.size = Math.random() * 2 + 1;
         this.color = "rgba(249, 115, 22, 0.6)";
+        this.mouseReactionSpeed = 2;
       }
 
       update() {
@@ -65,20 +67,20 @@ export default function ParticleBackground() {
 
         if (distance < mouse.radius + this.size) {
           if (mouse.x < this.x && this.x < (canvas?.width || 0) - this.size * 10) {
-            this.x += 0.5;
+            this.x += this.mouseReactionSpeed / Math.sqrt(distance);
           }
           if (mouse.x > this.x && this.x > this.size * 10) {
-            this.x -= 0.5;
+            this.x -= this.mouseReactionSpeed / Math.sqrt(distance);
           }
           if (mouse.y < this.y && this.y < (canvas?.height || 0) - this.size * 10) {
-            this.y += 0.5;
+            this.y += this.mouseReactionSpeed / Math.sqrt(distance);
           }
           if (mouse.y > this.y && this.y > this.size * 10) {
-            this.y -= 0.5;
+            this.y -= this.mouseReactionSpeed / Math.sqrt(distance);
           }
         }
 
-        this.x += this.directionX * 0.4; // slowed down slightly
+        this.x += this.directionX * 0.4;
         this.y += this.directionY * 0.4;
       }
 
