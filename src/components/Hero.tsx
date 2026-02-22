@@ -2,7 +2,10 @@ import ParticleBackground from "./ParticleBackground";
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-[#7c2d12]">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center pt-32 pb-16 overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-[#7c2d12]"
+    >
       {/* Animated Background */}
       <ParticleBackground />
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -16,9 +19,10 @@ export default function Hero() {
           Transformez Votre Présence En Ligne
         </h1>
         <p className="text-xl md:text-2xl text-white/85 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Solutions professionnelles de création et gestion de sites web pour propulser votre entreprise vers le succès numérique
+          Solutions professionnelles de création et gestion de sites web pour propulser votre entreprise vers le succès
+          numérique
         </p>
-        
+
         <div className="flex flex-wrap gap-4 justify-center mb-16">
           <a href="#contact" className="btn btn-primary text-lg px-8 py-4">
             Démarrer Votre Projet
