@@ -1,27 +1,28 @@
 "use client";
 
 import { useState } from "react";
+import { useForm } from "react-hook-form";
+
+type FormData = {
+  name: string;
+  email: string;
+  company: string;
+  message: string;
+  _gotcha: string;
+};
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-    _gotcha: "",
-  });
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm<FormData>();
 
   const [notification, setNotification] = useState<{ message: string; type: "success" | "error" } | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
-    if (!formData.name || !formData.email || !formData.message) {
-      setNotification({ message: "Veuillez remplir tous les champs obligatoires.", type: "error" });
-      return;
-    }
-
+  const onSubmit = async (data: FormData) => {
     setIsLoading(true);
 
     try {
@@ -33,10 +34,10 @@ export default function Contact() {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          name: formData.name,
-          email: formData.email,
-          company: formData.company,
-          message: formData.message,
+          name: data.name,
+          email: data.email,
+          company: data.company,
+          message: data.message,
         }),
       });
 
@@ -44,7 +45,7 @@ export default function Contact() {
 
       if (response.ok) {
         setNotification({ message: "Message envoyé avec succès! Nous vous contacterons bientôt.", type: "success" });
-        setFormData({ name: "", email: "", company: "", message: "", _gotcha: "" });
+        reset();
         setTimeout(() => setNotification(null), 5000);
       } else {
         throw new Error(result.error || "Une erreur est survenue lors de l'envoi.");
@@ -140,7 +141,7 @@ export default function Contact() {
           </div>
 
           <div className="lg:w-1/2 bg-white/5 p-6 rounded-2xl">
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                   Nom Complet
@@ -148,12 +149,11 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
-                  required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="Votre nom"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  {...register("name", { required: "Le nom est obligatoire." })}
                 />
+                {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>}
               </div>
 
               <div>
@@ -163,12 +163,14 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
-                  required
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="votre@email.com"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  {...register("email", {
+                    required: "L'adresse email est obligatoire.",
+                    pattern: { value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/, message: "L'adresse email est invalide." },
+                  })}
                 />
+                {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>}
               </div>
 
               <div>
@@ -180,8 +182,7 @@ export default function Contact() {
                   id="company"
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="Nom de votre entreprise"
-                  value={formData.company}
-                  onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                  {...register("company")}
                 />
               </div>
 
@@ -191,24 +192,21 @@ export default function Contact() {
                 </label>
                 <textarea
                   id="message"
-                  required
                   rows={4}
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="Parlez-nous de votre projet..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  {...register("message", { required: "Le message est obligatoire." })}
                 />
+                {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
               </div>
 
               {/* Anti-spam Honeypot field - hidden from users */}
               <input
                 type="text"
-                name="_gotcha"
                 className="hidden"
                 tabIndex={-1}
                 autoComplete="off"
-                value={formData._gotcha}
-                onChange={(e) => setFormData({ ...formData, _gotcha: e.target.value })}
+                {...register("_gotcha")}
               />
 
               <button
