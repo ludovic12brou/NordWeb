@@ -17,6 +17,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      pages: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -41,11 +42,21 @@ jobs:
         if: github.event.action != 'closed'
         run: npm ci
 
+      - name: Determine base path
+        id: base-path
+        if: github.event.action != 'closed'
+        run: |
+          if [ -f "public/CNAME" ]; then
+            echo "value=" >> $GITHUB_OUTPUT
+          else
+            echo "value=/${{ github.event.repository.name }}" >> $GITHUB_OUTPUT
+          fi
+
       - name: Build
         if: github.event.action != 'closed'
         run: npm run build
         env:
-          BASE_PATH: /${{ github.event.repository.name }}/pr-preview/pr-${{ github.event.number }}
+          BASE_PATH: ${{ steps.base-path.outputs.value }}/pr-preview/pr-${{ github.event.number }}
 
       - name: Deploy preview
         uses: rossjrw/pr-preview-action@v1
