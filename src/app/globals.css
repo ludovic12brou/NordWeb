@@ -75,6 +75,14 @@
 }
 
 /* Custom Utilities / Animations */
+@layer utilities {
+  .animate-fade-in-up {
+    animation: fadeInUp 0.8s ease-out forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+}
+
 .fade-in-up {
   animation: fadeInUp 0.8s ease-out forwards;
   opacity: 0;
