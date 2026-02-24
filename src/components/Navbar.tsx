@@ -77,10 +77,9 @@ export default function Navbar() {
             <li key={item.label}>
               <Link
                 href={item.href}
-                className="nav-link text-sm font-semibold text-gray-200 transition-colors hover:text-[#F97316] relative group"
+                className="nav-link text-sm font-medium text-gray-200 transition-colors hover:text-white relative"
               >
                 {item.label}
-                <span className="absolute bottom-[-2px] left-0 w-0 h-0.5 bg-gradient-to-r from-[#F97316] to-[#FCA04A] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
           ))}

@@ -47,9 +47,9 @@ export default function ParticleBackground() {
         this.y = Math.random() * (canvas?.height || window.innerHeight);
         this.directionX = Math.random() * 2 - 1;
         this.directionY = Math.random() * 2 - 1;
-        this.size = Math.random() * 2 + 1;
-        this.color = "rgba(249, 115, 22, 0.6)";
-        this.mouseReactionSpeed = 2;
+        this.size = Math.random() * 1.5 + 0.5;
+        this.color = "rgba(249, 115, 22, 0.12)";
+        this.mouseReactionSpeed = 1;
       }
 
       update() {
@@ -66,13 +66,19 @@ export default function ParticleBackground() {
         let distance = Math.sqrt(dx * dx + dy * dy);
 
         if (distance < mouse.radius + this.size) {
-          if (mouse.x < this.x && this.x < (canvas?.width || 0) - this.size * 10) {
+          if (
+            mouse.x < this.x &&
+            this.x < (canvas?.width || 0) - this.size * 10
+          ) {
             this.x += this.mouseReactionSpeed / Math.sqrt(distance);
           }
           if (mouse.x > this.x && this.x > this.size * 10) {
             this.x -= this.mouseReactionSpeed / Math.sqrt(distance);
           }
-          if (mouse.y < this.y && this.y < (canvas?.height || 0) - this.size * 10) {
+          if (
+            mouse.y < this.y &&
+            this.y < (canvas?.height || 0) - this.size * 10
+          ) {
             this.y += this.mouseReactionSpeed / Math.sqrt(distance);
           }
           if (mouse.y > this.y && this.y > this.size * 10) {
@@ -80,8 +86,8 @@ export default function ParticleBackground() {
           }
         }
 
-        this.x += this.directionX * 0.4;
-        this.y += this.directionY * 0.4;
+        this.x += this.directionX * 0.15;
+        this.y += this.directionY * 0.15;
       }
 
       draw() {
@@ -95,7 +101,7 @@ export default function ParticleBackground() {
 
     const initParticles = () => {
       particles = [];
-      const numberOfParticles = (canvas.width * canvas.height) / 12000; // Increased density slightly
+      const numberOfParticles = (canvas.width * canvas.height) / 6000;
       for (let i = 0; i < numberOfParticles; i++) {
         particles.push(new Particle());
       }
@@ -105,8 +111,10 @@ export default function ParticleBackground() {
       for (let a = 0; a < particles.length; a++) {
         for (let b = a; b < particles.length; b++) {
           const distance =
-            (particles[a].x - particles[b].x) * (particles[a].x - particles[b].x) +
-            (particles[a].y - particles[b].y) * (particles[a].y - particles[b].y);
+            (particles[a].x - particles[b].x) *
+              (particles[a].x - particles[b].x) +
+            (particles[a].y - particles[b].y) *
+              (particles[a].y - particles[b].y);
 
           if (distance < (canvas.width / 7) * (canvas.height / 7)) {
             let opacityValue = 1 - distance / 20000;
@@ -151,5 +159,11 @@ export default function ParticleBackground() {
     };
   }, []);
 
-  return <canvas ref={canvasRef} className="absolute inset-0 z-0 bg-transparent" style={{ willChange: "transform" }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      className="absolute inset-0 z-0 bg-transparent"
+      style={{ willChange: "transform" }}
+    />
+  );
 }
