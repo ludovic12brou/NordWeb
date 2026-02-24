@@ -35,7 +35,9 @@ export default function Navbar() {
           />
           <div className="flex flex-col ml-2">
             <span className="text-white font-bold text-xl">NordWeb</span>
-            <span className="text-orange-500 font-medium text-sm">Solutions Web</span>
+            <span className="text-orange-500 font-medium text-sm">
+              Solutions Web
+            </span>
           </div>
         </Link>
 
@@ -64,13 +66,20 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center gap-8">
-          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Équipe", "Contact"].map((item) => (
-            <li key={item}>
+          {[
+            { label: "Accueil", href: "#home" },
+            { label: "Services", href: "#services" },
+            { label: "Avantages", href: "#features" },
+            { label: "Portfolio", href: "#portfolio" },
+            { label: "À propos", href: "#about" },
+            { label: "Contact", href: "#contact" },
+          ].map((item) => (
+            <li key={item.label}>
               <Link
-                href={`#${item.toLowerCase().replace("é", "e").replace("à", "a")}`}
+                href={item.href}
                 className="nav-link text-sm font-semibold text-gray-200 transition-colors hover:text-[#F97316] relative group"
               >
-                {item}
+                {item.label}
                 <span className="absolute bottom-[-2px] left-0 w-0 h-0.5 bg-gradient-to-r from-[#F97316] to-[#FCA04A] transition-all duration-300 group-hover:w-full"></span>
               </Link>
             </li>
@@ -83,14 +92,21 @@ export default function Navbar() {
             isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
           }`}
         >
-          {["Accueil", "Services", "Avantages", "Portfolio", "Témoignages", "Équipe", "Contact"].map((item) => (
+          {[
+            { label: "Accueil", href: "#home" },
+            { label: "Services", href: "#services" },
+            { label: "Avantages", href: "#features" },
+            { label: "Portfolio", href: "#portfolio" },
+            { label: "À propos", href: "#about" },
+            { label: "Contact", href: "#contact" },
+          ].map((item) => (
             <Link
-              key={item}
-              href={`#${item.toLowerCase().replace("é", "e").replace("à", "a")}`}
+              key={item.label}
+              href={item.href}
               className="text-lg font-semibold text-gray-200 hover:text-[#F97316] transition-colors"
               onClick={() => setIsOpen(false)}
             >
-              {item}
+              {item.label}
             </Link>
           ))}
         </div>
