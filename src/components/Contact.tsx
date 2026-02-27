@@ -29,8 +29,7 @@ export default function Contact() {
     setIsLoading(true);
 
     try {
-      const API_URL =
-        "https://mail-client-647822815809.northamerica-northeast1.run.app";
+      const API_URL = "https://mail-client-647822815809.northamerica-northeast1.run.app";
 
       const response = await fetch(API_URL, {
         method: "POST",
@@ -49,16 +48,13 @@ export default function Contact() {
 
       if (response.ok) {
         setNotification({
-          message:
-            "Message envoyé avec succès! Nous vous contacterons bientôt.",
+          message: "Message envoyé avec succès! Nous vous contacterons bientôt.",
           type: "success",
         });
         reset();
         setTimeout(() => setNotification(null), 5000);
       } else {
-        throw new Error(
-          result.error || "Une erreur est survenue lors de l'envoi.",
-        );
+        throw new Error(result.error || "Une erreur est survenue lors de l'envoi.");
       }
     } catch (error) {
       console.error(error);
@@ -72,46 +68,17 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-24 bg-gradient-to-b from-slate-900 to-[#0E2A4F]"
-    >
+    <section id="contact" className="py-24 bg-gradient-to-b from-slate-900 to-[#0E2A4F]">
       <div className="container">
         <div className="flex flex-col lg:flex-row gap-12 bg-white/5 rounded-lg p-8 md:p-12 border border-white/10">
           <div className="lg:w-1/2">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Prêt à Démarrer Votre Projet?
-            </h2>
+            <h2 className="text-3xl font-bold text-white mb-4">Prêt à Démarrer Votre Projet?</h2>
             <p className="text-gray-300 mb-8 leading-relaxed">
-              Discutons de vos besoins et découvrez comment NordWeb peut
-              propulser votre entreprise vers le succès numérique.
+              Discutons de vos besoins et découvrez comment NordWeb peut propulser votre entreprise vers le succès
+              numérique.
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-orange-500">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                </div>
-                <div>
-                  <div className="text-sm text-gray-400">Téléphone</div>
-                  <div className="text-white font-semibold">
-                    +1 (514) 555-NORD
-                  </div>
-                </div>
-              </div>
-
               <div className="flex items-center gap-4">
                 <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center text-orange-500">
                   <svg
@@ -131,9 +98,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-400">Email</div>
-                  <div className="text-white font-semibold">
-                    contact@nordweb.com
-                  </div>
+                  <div className="text-white font-semibold">admin@nordweb.com</div>
                 </div>
               </div>
 
@@ -156,9 +121,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-400">Localisation</div>
-                  <div className="text-white font-semibold">
-                    Montréal, Québec
-                  </div>
+                  <div className="text-white font-semibold">Montréal, Québec</div>
                 </div>
               </div>
             </div>
@@ -167,10 +130,7 @@ export default function Contact() {
           <div className="lg:w-1/2 bg-white/5 p-6 rounded-lg">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
               <div>
-                <label
-                  htmlFor="name"
-                  className="block text-sm font-medium text-gray-300 mb-1"
-                >
+                <label htmlFor="name" className="block text-sm font-medium text-gray-300 mb-1">
                   Nom Complet
                 </label>
                 <input
@@ -180,18 +140,11 @@ export default function Contact() {
                   placeholder="Votre nom"
                   {...register("name", { required: "Le nom est obligatoire." })}
                 />
-                {errors.name && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.name.message}
-                  </p>
-                )}
+                {errors.name && <p className="mt-1 text-sm text-red-400">{errors.name.message}</p>}
               </div>
 
               <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium text-gray-300 mb-1"
-                >
+                <label htmlFor="email" className="block text-sm font-medium text-gray-300 mb-1">
                   Adresse Email
                 </label>
                 <input
@@ -207,18 +160,11 @@ export default function Contact() {
                     },
                   })}
                 />
-                {errors.email && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.email.message}
-                  </p>
-                )}
+                {errors.email && <p className="mt-1 text-sm text-red-400">{errors.email.message}</p>}
               </div>
 
               <div>
-                <label
-                  htmlFor="company"
-                  className="block text-sm font-medium text-gray-300 mb-1"
-                >
+                <label htmlFor="company" className="block text-sm font-medium text-gray-300 mb-1">
                   Entreprise
                 </label>
                 <input
@@ -231,10 +177,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label
-                  htmlFor="message"
-                  className="block text-sm font-medium text-gray-300 mb-1"
-                >
+                <label htmlFor="message" className="block text-sm font-medium text-gray-300 mb-1">
                   Message
                 </label>
                 <textarea
@@ -246,21 +189,11 @@ export default function Contact() {
                     required: "Le message est obligatoire.",
                   })}
                 />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-400">
-                    {errors.message.message}
-                  </p>
-                )}
+                {errors.message && <p className="mt-1 text-sm text-red-400">{errors.message.message}</p>}
               </div>
 
               {/* Anti-spam Honeypot field - hidden from users */}
-              <input
-                type="text"
-                className="hidden"
-                tabIndex={-1}
-                autoComplete="off"
-                {...register("_gotcha")}
-              />
+              <input type="text" className="hidden" tabIndex={-1} autoComplete="off" {...register("_gotcha")} />
 
               <button
                 type="submit"

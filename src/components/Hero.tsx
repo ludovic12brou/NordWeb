@@ -17,8 +17,8 @@ export default function Hero() {
           Transformez Votre Présence En Ligne
         </h1>
         <p className="text-lg md:text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-          Solutions professionnelles de création et gestion de sites web pour
-          propulser votre entreprise vers le succès numérique
+          Solutions professionnelles de création et gestion de sites web pour propulser votre entreprise vers le succès
+          numérique
         </p>
 
         <div className="flex flex-wrap gap-4 justify-center mb-16">
@@ -28,21 +28,6 @@ export default function Hero() {
           <a href="#services" className="btn btn-secondary text-lg px-8 py-4">
             Découvrir Nos Services
           </a>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 max-w-4xl mx-auto">
-          <div className="p-6 bg-white/5 rounded-lg border border-white/10 transition-colors hover:bg-white/8">
-            <div className="text-3xl font-bold text-white mb-2">500+</div>
-            <div className="text-sm text-gray-400">Projets Réalisés</div>
-          </div>
-          <div className="p-6 bg-white/5 rounded-lg border border-white/10 transition-colors hover:bg-white/8">
-            <div className="text-3xl font-bold text-white mb-2">98%</div>
-            <div className="text-sm text-gray-400">Clients Satisfaits</div>
-          </div>
-          <div className="p-6 bg-white/5 rounded-lg border border-white/10 transition-colors hover:bg-white/8">
-            <div className="text-3xl font-bold text-white mb-2">24/7</div>
-            <div className="text-sm text-gray-400">Support Technique</div>
-          </div>
         </div>
       </div>
     </section>
