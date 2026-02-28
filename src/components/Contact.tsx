@@ -98,7 +98,7 @@ export default function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-gray-400">Email</div>
-                  <div className="text-white font-semibold">admin@nordweb.com</div>
+                  <div className="text-white font-semibold">admin@nordweb.ca</div>
                 </div>
               </div>
 
@@ -136,6 +136,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="name"
+                  autoComplete="name"
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="Votre nom"
                   {...register("name", { required: "Le nom est obligatoire." })}
@@ -150,6 +151,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  autoComplete="email"
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="votre@email.com"
                   {...register("email", {
@@ -170,6 +172,7 @@ export default function Contact() {
                 <input
                   type="text"
                   id="company"
+                  autoComplete="organization"
                   className="w-full px-4 py-3 bg-white/5 border border-white/10 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-orange-500 focus:ring-1 focus:ring-orange-500 transition-colors"
                   placeholder="Nom de votre entreprise"
                   {...register("company")}

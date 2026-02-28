@@ -19,13 +19,11 @@ export default function Navbar() {
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#0E2A4F]/95 backdrop-blur-md shadow-md py-2"
-          : "bg-transparent py-4"
+        scrolled ? "bg-[#0E2A4F]/95 backdrop-blur-md shadow-md py-2" : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-4 md:px-8">
-        <Link href="#" className="flex items-center group">
+        <Link href="#home" className="flex items-center group">
           <Image
             src="/logo.png"
             alt="NordWeb Logo"
@@ -35,9 +33,7 @@ export default function Navbar() {
           />
           <div className="flex flex-col ml-2">
             <span className="text-white font-bold text-xl">NordWeb</span>
-            <span className="text-orange-500 font-medium text-sm">
-              Solutions Web
-            </span>
+            <span className="text-orange-500 font-medium text-sm">Solutions Web</span>
           </div>
         </Link>
 
@@ -48,19 +44,11 @@ export default function Navbar() {
           aria-label="Toggle menu"
         >
           <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "rotate-45 translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "rotate-45 translate-y-2" : ""}`}
           ></span>
+          <span className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "opacity-0" : ""}`}></span>
           <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "opacity-0" : ""
-            }`}
-          ></span>
-          <span
-            className={`w-6 h-0.5 bg-white transition-all duration-300 ${
-              isOpen ? "-rotate-45 -translate-y-2" : ""
-            }`}
+            className={`w-6 h-0.5 bg-white transition-all duration-300 ${isOpen ? "-rotate-45 -translate-y-2" : ""}`}
           ></span>
         </button>
 
@@ -70,7 +58,6 @@ export default function Navbar() {
             { label: "Accueil", href: "#home" },
             { label: "Services", href: "#services" },
             { label: "Avantages", href: "#features" },
-            { label: "Portfolio", href: "#portfolio" },
             { label: "À propos", href: "#about" },
             { label: "Contact", href: "#contact" },
           ].map((item) => (
@@ -95,7 +82,6 @@ export default function Navbar() {
             { label: "Accueil", href: "#home" },
             { label: "Services", href: "#services" },
             { label: "Avantages", href: "#features" },
-            { label: "Portfolio", href: "#portfolio" },
             { label: "À propos", href: "#about" },
             { label: "Contact", href: "#contact" },
           ].map((item) => (
